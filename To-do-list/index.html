@@ -1,75 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Todo List</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Todo List</h1>
+      <div class="input-container">
+        <input class="todo-input" type="text" placeholder="Add a new task..." />
+        <button class="add-button">
+          <i class="fa fa-plus-circle"></i>
+        </button>
+      </div>
+      <div class="todos-container">
+        <ul class="todos"></ul>
+        <img
+          class="empty-image"
+          src="https://cdn-icons-png.flaticon.com/256/8298/8298904.png"
+        />
+      </div>
+    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> -->
-</head>
-
-<body>
-    <section>
-        <h1><i class="fa fa-list-alt" aria-hidden="true"></i> To Do List</h1>
-        <div class="wrapper">
-        <div class="input-container">
-            <input type="text" name="todo" class="todo-input" id="todo-input" placeholder="Enter TODO Task">
-            <button class="add-button" id="add-button">
-                <i class="fa-solid fa-circle-plus"></i>
-            </button>
-        </div>
-        <ul class="todo-container" id="todo-container"></ul>
-        </div>
-    </section>
-
-    <script>
-        addButton = document.getElementById("add-button");
-        todoContainer = document.getElementById("todo-container");
-        todoInput = document.getElementById("todo-input");
-
-        addButton.addEventListener("click", (e) => {
-            let todo = document.createElement("div");
-            todo.classList.add("todo");
-
-            let li = document.createElement("li");
-            li.innerText = `${todoInput.value}`;
-            todo.appendChild(li);
-
-            let checkButton = document.createElement("button");
-            checkButton.innerHTML = '<i class="fa-solid fa-check"></i>';
-            checkButton.classList.add("todo-check");
-            todo.appendChild(checkButton);
-
-            let deleteButton = document.createElement("button");
-            deleteButton.innerHTML = '<i class="fa-solid fa-circle-minus"></i>';
-            deleteButton.classList.add("todo-delete");
-            todo.appendChild(deleteButton);
-
-            if(todoInput.value === ""){
-                alert("Please Enter Some Text");
-            }
-            else{
-                todoContainer.appendChild(todo);
-            }
-
-            todoInput.value = "";
-        });
-
-        todoContainer.addEventListener("click", (e) =>{
-                let target =e.target;
-                if(target.classList.contains("todo-delete")){
-                    let item = target.parentElement;
-                    item.remove();
-                }
-
-                if(target.classList.contains("todo-check")){
-                    let item = target.parentElement;
-                    item.classList.toggle("completed");
-                }
-        })
-    </script>
-</body>
-
+    <script src="./script.js"></script>
+  </body>
 </html>
